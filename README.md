@@ -1,11 +1,11 @@
-# Address Translator
-A simple BTC/BCH addresses translator.
+# BCH OP_CODES
+A simple BCH opcodes playground
 
 ## Installation
 Get the source code:
 
 ```
-git clone git@github.com:bitpay/address-translator.git && cd address-translator
+git clone http://github.com:matiu/opcodes-playground.git && cd opcodes-playground
 npm install
 ```
 
@@ -36,7 +36,7 @@ You can see the original discussion about this here: https://github.com/angular/
 ## Public Installation
 
 There is a public install of this software hosted at github at: 
-https://bitpay.github.io/address-translator/
+https://matiu.github.io/opcodes-playground
 
 ## Development server
 
@@ -50,26 +50,13 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
 ## Publish web on Github Pages (gh-pages)
 
 ### Install:
 `npm i -g angular-cli-ghpages`
 
 ### Build:
-`ng build --prod --aot=false --base-href "https://bitpay.github.io/address-translator/"`
+`ng build --prod --aot=false --base-href "https://matiu.github.io/opcodes-playground/"`
 
 (see base-href on your repo settings)
 
