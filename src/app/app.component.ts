@@ -24,7 +24,7 @@ export class AppComponent {
         var res = this.scriptRunner.run(script);
 
         console.log('[app.component.ts.26:res:]',res); //TODO
-      this.errorStr = res.errorStr;
+        this.errorStr = res.errorStr;
         this.errorDetail = res.errorDetail;
         this.result = res.result;
   }

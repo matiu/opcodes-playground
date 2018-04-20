@@ -40,7 +40,6 @@ export class ScriptRunner {
                     bw.writeUInt8(opcodenum);
                 } else if (!isNaN(parseInt(token))) {
                     var script = B.Script().add(new B.crypto.BN(token).toScriptNumBuffer());
-                    
                     tbuf = script.toBuffer();
                     bw.write(tbuf);
                 } else {
@@ -167,7 +166,8 @@ export class ScriptRunner {
         try {
             var res = interp.verify(scriptSig, scriptPubkey, spendtx, 0, flags, new B.crypto.BN(inputAmount));
             return {
-                "result": res 
+              "result": res,
+              "errorStr": interp.errstr,
             };
         } catch (e) {
             console.log('[script.runner.service.ts.165] ERR', e); //TODO
