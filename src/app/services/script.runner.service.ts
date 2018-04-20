@@ -117,7 +117,7 @@ export class ScriptRunner {
 
 
 
-    public run(scriptStr: string): any {
+    public run(scriptStr: string, flagsStr: string): any {
         console.log('[script.runner.service.ts.11] running', scriptStr); //TODO
 
         try {
@@ -128,7 +128,7 @@ export class ScriptRunner {
         }
 
 
-        var flags = this.getFlags('P2SH,STRICTENC,MONOLITH_OPCODES'); // ToDo
+        var flags = this.getFlags(flagsStr); // ToDo
         var inputAmount = 0;
         // ToDo
         //        if (extraData) {
@@ -148,33 +148,39 @@ export class ScriptRunner {
             script: scriptPubkey,
             satoshis: inputAmount, 
         }));
-        var idbuf = credtx.id;
+      var idbuf = credtx.id;
 
-        var spendtx = new B.Transaction();
-        spendtx.uncheckedAddInput(new B.Transaction.Input({
-            prevTxId: idbuf.toString('hex'),
-            outputIndex: 0,
-            sequenceNumber: 0xffffffff,
-            script: scriptSig
-        }));
-        spendtx.addOutput(new B.Transaction.Output({
-            script: new B.Script(),
-            satoshis: inputAmount,
-        }));
+      var spendtx = new B.Transaction();
+      spendtx.uncheckedAddInput(new B.Transaction.Input({
+        prevTxId: idbuf.toString('hex'),
+        outputIndex: 0,
+        sequenceNumber: 0xffffffff,
+        script: scriptSig
+      }));
+      spendtx.addOutput(new B.Transaction.Output({
+        script: new B.Script(),
+        satoshis: inputAmount,
+      }));
 
-        var interp = new this.S.Interpreter();
-        try {
-            var res = interp.verify(scriptSig, scriptPubkey, spendtx, 0, flags, new B.crypto.BN(inputAmount));
-            return {
-              "result": res,
-              "errorStr": interp.errstr,
-            };
-        } catch (e) {
-            console.log('[script.runner.service.ts.165] ERR', e); //TODO
-            return {
-                errorStr: e,
-            };
+      var log = {
+        spendTx: spendtx.toObject(),
+        creditTx: credtx.toObject(),
+      };
+
+      var interp = new this.S.Interpreter();
+      try {
+        var res = interp.verify(scriptSig, scriptPubkey, spendtx, 0, flags, new B.crypto.BN(inputAmount));
+        return {
+          "result": res,
+          "errorStr": interp.errstr,
+          "log": JSON.stringify(log, undefined, 2),
         };
+      } catch (e) {
+        console.log('[script.runner.service.ts.165] ERR', e); //TODO
+        return {
+          errorStr: e,
+        };
+      };
 
     }
 }

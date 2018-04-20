@@ -25,10 +25,29 @@
             <div class="input-group">
               <div class="input-group-addon">Script:</div>
               <input type="text" class="form-control ellipsis" id="script" name="script" [(ngModel)]="script"
-                (ngModelChange)="run(script)">
+                (ngModelChange)="run(script, flagsStr, showDetails)">
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Flags:</div>
+              <input type="text" class="form-control ellipsis" id="flagsStr" name="flagsStr" [(ngModel)]="flagsStr"
+                (ngModelChange)="run(script, flagsStr, showDetails)">
+            </div>
+          </div>
+        </div>
+         <div class="row">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Show details:</div>
+              <input type="checkbox" class="form-control ellipsis" id="showDetails" name="showDetails" [(ngModel)]="showDetails"
+                (ngModelChange)="run(script, flagsStr, showDetails)">
+            </div>
+          </div>
+        </div>
+ 
         <div class="row" *ngIf="errorStr">
           <div class="form-group col">
             <div class="input-group">
@@ -56,6 +75,15 @@
             </div>
           </div>
         </div>
+        <div class="row" *ngIf="!errorStr && log">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Log:</div>
+              <pre>{{log}} </pre>
+            </div>
+          </div>
+        </div>
+
 
       </div>
     </div>
