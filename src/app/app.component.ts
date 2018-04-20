@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ScriptRunner } from '../app/services/script.runner.service';
+import { ScriptExamples } from '../app/services/script.examples.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ScriptRunner]
+  providers: [ScriptRunner, ScriptExamples]
 })
 export class AppComponent {
 
@@ -14,9 +15,13 @@ export class AppComponent {
     public errorDetail: string;
     public flagsStr: string;
     public log: string;
+    public s: string;
+    public ex: string;
+    public examples: any;
 
     constructor(
-        private scriptRunner:ScriptRunner
+        private scriptRunner:ScriptRunner,
+        private scriptExamples:ScriptExamples
   ) {
         this.flagsStr = 'P2SH,STRICTENC,MONOLITH_OPCODES';
   }
@@ -35,5 +40,11 @@ export class AppComponent {
         this.errorDetail = res.errorDetail;
         this.result = res.result;
         this.log = showDetails ?  res.log : '';
-  }
+    }
+
+    public getExample(s:string) { 
+        this.ex = this.scriptExamples.get(s);
+    }
+
+
 }

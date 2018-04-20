@@ -1,12 +1,12 @@
 <div class="header">
   <div class="header-content">
+
+    <a href="https://github.com/matiu/opcodes-playground" target="blank">
+        <img  class="logo" src="assets/img/bch.png" alt="Github">
+    </a>
+
     <div class="header-center">
-      <h3 class="header-title">Bitcoin Cash OpCodes Playground  </h3>
-      <div class="repository-link">
-        <a href="https://github.com/matiu/opcodes-playground" target="blank">
-          <img src="assets/img/github.png" alt="Github">
-        </a>
-      </div>
+      <h3 class="header-title">OpCodes Playground</h3>
     </div>
   </div>
 </div>
@@ -47,6 +47,8 @@
             </div>
           </div>
         </div>
+
+
  
         <div class="row" *ngIf="errorStr">
           <div class="form-group col">
@@ -91,21 +93,52 @@
 
 <div class="card">
     <div class="card-block">
-    <div class="row">
-        <div>Opcode references:</div>
-    </div>
-    <div class="row">
-<a  href="https://github.com/bitcoincashorg/spec/blob/master/may-2018-reenabled-opcodes.md"> New Opcodes</a>
-    </div>
-    <div class="row">
-<a  href="https://en.bitcoin.it/wiki/Script"> All Opcodes</a>
-    </div>
+        <div class="row">
+            <div class="form-group col">
+            <div class="input-group">
+                <div class="input-group-addon">Search examples:</div>
+                <input type="text" class="form-control ellipsis" id="s" name="s" [(ngModel)]="s"
+                (ngModelChange)="getExample(s)">
+            </div>
+            </div>
+        </div>
+        <div  *ngIf="ex">
+            <div *ngFor="let x of ex" >
+                <div class="row">
+                    <div class="col">
+                        <b>Script</b>: {{x.script}} 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <b>Expected result</b>: {{x.res}}
+                        <b>Flags</b>:  {{x.flags}}
+                        <span *ngIf="x.extra"><b>Amount</b>: {{x.extra}}</span>
+                    </div>
+                </div>
+                <hr flex/>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div>Opcode references:</div>
+        </div>
+        <div class="row">
+    <a  href="https://github.com/bitcoincashorg/spec/blob/master/may-2018-reenabled-opcodes.md"> New Opcodes</a>
+        </div>
+        <div class="row">
+    <a  href="https://en.bitcoin.it/wiki/Script"> All Opcodes</a>
+        </div>
     </div>
 </div>
 
 <div class="card">
 <p>
-2018 (C) <a href="https://twitter.com/ematiu">@ematiu</a> using <a href="https://github.com/bitpay/bitcore-lib/pull/230">Bitcore-lib-cash</a>. MIT Licenced
+By <a href="https://twitter.com/ematiu">@ematiu</a> thanks to <a href="http://bitpay.com">BitPay</a>  using <a href="https://github.com/bitpay/bitcore-lib/pull/230">Bitcore-lib-cash</a>. MIT Licenced. Code at <a href="https://github.com/matiu/opcodes-playground" target="blank"> Github</a>
+
+
 </div>
 
 </div>

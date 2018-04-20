@@ -3,15 +3,7 @@ $bitpayColor: #293c92;
 $copayColor: #192c3a;
 $copayColorOld: #1abb9b;
 $white: #ffffff;
-$bodyBackgroundColor: #F1f3f5;
-
-@mixin gradient {
-  background: $bitpayColor; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, $bitpayColor , $copayColorOld); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, $bitpayColor, $copayColorOld); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, $bitpayColor, $copayColorOld); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, $bitpayColor , $copayColorOld); /* Standard syntax */
-}
+$bodyBackgroundColor: #fff;
 
 html {
   position: relative;
@@ -57,15 +49,14 @@ body {
 
 .header {
   height: 8rem;
-  @include gradient;
 
   .header-content {
     display: flex;
     justify-content: space-around;
     padding-top: 2.6rem;
 
-    .bitpay-logo, .copay-logo {
-      max-height: 3rem;
+    .logo {
+      height: 12rem;
     }
 
     .header-center {
@@ -74,24 +65,15 @@ body {
       .header-title {
         text-align: center;
         margin: 0rem;
-        color: $white;
-        text-shadow: 1px 1px $copayColor;
-        text-transform: uppercase;
-        font-size: 1.2rem;
-      }
-
-      .repository-link {
-        text-align: center;
-        img {
-          width: 1.5rem;
-        }
+        font-size: 2rem;
+        color:#777;
       }
     }
   }
 }
 
 .container {
-  padding-top: 2rem;
+  padding-top: 9rem;
   padding-bottom: 2rem;
   form {
     margin-bottom: 1.5rem;
