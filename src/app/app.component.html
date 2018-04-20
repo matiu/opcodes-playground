@@ -1,0 +1,83 @@
+<div class="header">
+  <div class="header-content">
+    <div class="header-center">
+      <h3 class="header-title">Bitcoin Cash OpCodes Playground  </h3>
+      <div class="repository-link">
+        <a href="https://github.com/matiu/opcodes-playground" target="blank">
+          <img src="assets/img/github.png" alt="Github">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="warning">
+    <b>WARNING:</b> This tool is BETA software. Do *not* use it to craft any script holding any significant amount of money without first testing it using other implementations/testnet, etc.
+  </div>
+
+  <form #translateForm="ngForm">
+    <div class="card">
+      <div class="card-block">
+        <h6 class="card-title">Enter a Bitcoin Cash Script</h6>
+        <div class="row">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Script:</div>
+              <input type="text" class="form-control ellipsis" id="script" name="script" [(ngModel)]="script"
+                (ngModelChange)="run(script)">
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="errorStr">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Error:</div>
+              <input type="text" class="form-control ellipsis" id="errorStr" name="errorStr" [(ngModel)]="errorStr" >
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="errorStr">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Details:</div>
+              <input type="text" class="form-control ellipsis" id="errorDetail" name="errorDetail" [(ngModel)]="errorDetail" >
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row" *ngIf="!errorStr">
+          <div class="form-group col">
+            <div class="input-group">
+              <div class="input-group-addon">Result:</div>
+              <input type="text" class="form-control ellipsis" id="result" name="result" [(ngModel)]="result" >
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+<div class="card">
+    <div class="card-block">
+    <div class="row">
+        <div>Opcode references:</div>
+    </div>
+    <div class="row">
+<a  href="https://github.com/bitcoincashorg/spec/blob/master/may-2018-reenabled-opcodes.md"> New Opcodes</a>
+    </div>
+    <div class="row">
+<a  href="https://en.bitcoin.it/wiki/Script"> All Opcodes</a>
+    </div>
+    </div>
+</div>
+
+<div class="card">
+<p>
+(C) <a href="https://twitter.com/ematiu">@ematiu</a> using <a href="https://github.com/bitpay/bitcore-lib/pull/230">Bitcore-lib-cash</a>. MIT Licenced
+</div>
+
+</div>
